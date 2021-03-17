@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
-import xyz.mooka.api.out.NaverApi
+import xyz.mooka.api.gateway.NaverApi
 
 @SpringBootTest
 class MookaApplicationTests(
@@ -24,7 +24,7 @@ class MookaApplicationTests(
 
     @Test
     fun callNaverApi() {
-        naverApi.getTest("test")
+        naverApi.getMovieList("페르소나")
     }
 
 }
