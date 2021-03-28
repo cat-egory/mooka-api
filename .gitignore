@@ -35,3 +35,7 @@ out/
 
 ### VS Code ###
 .vscode/
+
+### prettier java ###
+node_modules
+package-lock.json
