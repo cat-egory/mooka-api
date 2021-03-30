@@ -2,5 +2,9 @@ spring:
   profiles:
     active: local
 
+logging:
+  file:
+    path: /Users/palsibmaniju-in/alex/cat-egory/mooka-api/logs/local
+
 server:
   port: 8081
