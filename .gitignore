@@ -4,6 +4,7 @@ build/
 !gradle/wrapper/gradle-wrapper.jar
 !**/src/main/**/build/
 !**/src/test/**/build/
+logs/
 
 ### STS ###
 .apt_generated
@@ -39,3 +40,5 @@ out/
 ### prettier java ###
 node_modules
 package-lock.json
+
+application-local.yml
