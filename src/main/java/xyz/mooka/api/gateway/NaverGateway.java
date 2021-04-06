@@ -2,6 +2,7 @@ package xyz.mooka.api.gateway;
 
 import java.util.Optional;
 import java.util.concurrent.atomic.AtomicReference;
+import javax.annotation.PostConstruct;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,8 +25,8 @@ public class NaverGateway {
     @Value("${api.naver.naverSecret}")
     String naverSecret;
 
-    @Autowired
-    NaverGateway() {
+    @PostConstruct
+    void initGateway() {
         webClient =
             WebClient
                 .builder()

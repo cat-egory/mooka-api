@@ -46,7 +46,7 @@ public class MovieServiceTest {
     }
 
     @Test
-    public void getNaverMovieLIst() {
+    public void getNaverMovieList() {
         logger.info(naverGateway.get("/v1/search/movie.json?query=$name&display=10&start=1&genre=1"));
     }
 
