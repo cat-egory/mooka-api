@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Mono;
+import xyz.mooka.api.dto.NaverMovieDto;
 import xyz.mooka.api.gateway.NaverGateway;
 
 @SpringBootTest
@@ -22,25 +23,6 @@ public class MovieServiceTest {
     }
 
     @Test
-    public void firstNaver() {
-        WebClient webClient = WebClient.builder()
-                .baseUrl("https://openapi.naver.com")
-                .defaultHeader("X-Naver-Client-Id", "테스트아이")
-                .defaultHeader("X-Naver-Client-Secret", "비번")
-                .build();
-
-        Mono<String> stringMono = webClient.mutate()
-                .build()
-                .get()
-                .uri("/v1/search/movie.json?query=$name&display=10&start=1&genre=1")
-                .retrieve()
-                .bodyToMono(String.class);
-
-        logger.info("------");
-        stringMono.blockOptional().ifPresent(logger::info);
-    }
-
-    @Test
     public void getNaverInfo() {
         naverGateway.showNaverInfo();
     }
@@ -48,6 +30,29 @@ public class MovieServiceTest {
     @Test
     public void getNaverMovieList() {
         logger.info(naverGateway.get("/v1/search/movie.json?query=$name&display=10&start=1&genre=1"));
+    }
+
+    @Test
+    public void buildNaverMovieDto() {
+        NaverMovieDto movieDto = NaverMovieDto.builder()
+                .title("아들의 이름으로")
+                .link("https://movie.naver.com/movie/bi/mi/basic.nhn?code=195694")
+                .image("https://ssl.pstatic.net/imgmovie/mdi/mit110/1956/195694_P01_150445.jpg")
+                .subtitle("In the Name of the Son")
+                .pubDate("2020")
+                .director("이정국|")
+                .actor("안성기|박근형|윤유선|")
+                .userRating("0.00")
+                .build();
+                //"title": "아들의 이름으로",
+        // "link": "https://movie.naver.com/movie/bi/mi/basic.nhn?code=195694",
+        // "image": "https://ssl.pstatic.net/imgmovie/mdi/mit110/1956/195694_P01_150445.jpg",
+        // "subtitle": "In the Name of the Son",
+        // "pubDate": "2020", "director": "이정국|",
+        // "actor": "안성기|박근형|윤유선|",
+        // "userRating": "0.00"
+
+        logger.info("movie dto:" + movieDto.toString());
     }
 
 }
