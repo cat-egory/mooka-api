@@ -28,12 +28,12 @@ public class SimpleProducer {
 
         KafkaProducer<String, String> producer = new KafkaProducer<String, String>(configs);
 
-        String messageValue = "testMessage";
-        ProducerRecord<String, String> record = new ProducerRecord<>(TOPIC_NAME, "pangyo-dodo", "10");
+        String messageValue = "testMessage1";
+        ProducerRecord<String, String> record = new ProducerRecord<>(TOPIC_NAME, "pangyo-dodo", "11");
         RecordMetadata metadata = producer.send(record).get();
         logger.info(metadata.toString());
         record = new ProducerRecord<>(TOPIC_NAME, "save123", messageValue);
-        metadata = producer.send(record).get();
+        metadata = producer.send(record, new ProducerCallback()).get();
         logger.info(metadata.toString());
         producer.flush();
         producer.close();

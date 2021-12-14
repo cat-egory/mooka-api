@@ -23,7 +23,7 @@ dependencies {
     testAnnotationProcessor('org.projectlombok:lombok')
     // https://mvnrepository.com/artifact/org.apache.kafka/kafka-clients
     implementation group: 'org.apache.kafka', name: 'kafka-clients', version: '2.5.0'
-    compile 'org.slf4j:slf4j-simple:1.7.30'
+    // compile 'org.slf4j:slf4j-simple:1.7.30'
 }
 
 test {
